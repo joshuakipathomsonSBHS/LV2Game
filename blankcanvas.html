@@ -1,6 +1,6 @@
-<!DOCTYPE html>
+<!doctype html>
 <body>
-    <canvas id="gameCanvas" width="1072" height="600"></canvas>
+    <canvas id="gameCanvas" width="400" height="400"></canvas>
     <script>
         var canvas, canvasContext;
 
@@ -8,12 +8,15 @@
             canvas = document.getElementById('gameCanvas');
             canvasContext = canvas.getContext('2d');
 
+            document.addEventListener('keydown' = keyPressed);
+            document.addEventListener('keyup' = keyReleased);
+
             setInterval(mainloop, 1000/50);
         }
 
         function mainloop(){
-            colorRect(0,0,canvas.width,canvas.height,'black')
-            
+            colorRect(0,0,canvas.width,canvas.height,'black') // bg
+            colorRect(100,50,20,20,'red') // player
         }
 
         function colorRect(x,y,w,h,c){
