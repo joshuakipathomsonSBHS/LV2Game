@@ -1,27 +1,22 @@
-<!DOCTYPE html>
+<!doctype html>
 <body>
-    <canvas id="gameCanvas" width="1072" height="600"></canvas>
+    <canvas id="gameCanvas" width="400" height="400"></canvas>
     <script>
         var canvas, canvasContext;
-
 
         window.onload = function() {
             canvas = document.getElementById('gameCanvas');
             canvasContext = canvas.getContext('2d');
 
-            setInterval(mainloop, 1000/50);
+            document.addEventListener('keydown' = keyPressed);
+            document.addEventListener('keyup' = keyReleased);
 
+            setInterval(mainloop, 1000/50);
         }
 
-        var playerXpos = 0;
-        var playerYpos = 0;
-        var playerXspeed = 5;
-        var playerYspeed = 5;
-        const PLAYER_SIZE = 15;
-
         function mainloop(){
-            colorRect(0,0,canvas.width,canvas.height,'black') //bg
-            colorRect(playerXpos,playerYpos,PLAYER_SIZE,PLAYER_SIZE,'red') //player
+            colorRect(0,0,canvas.width,canvas.height,'black') // bg
+            colorRect(100,50,20,20,'red') // player
         }
 
         function colorRect(x,y,w,h,c){
@@ -29,6 +24,5 @@
         canvasContext.fillRect(x,y,w,h);
         }
 
-        
     </script>
 </body>
