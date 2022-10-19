@@ -13,6 +13,13 @@
 
             setInterval(mainloop, 1000/50);
         }
+        var playerXpos = 200;
+        var playerYpos = 400 - PLAYER_SIZE;
+        var playerXspeed = 5;
+        var playerYspeed = 5;
+        const PLAYER_SIZE = 10;
+
+        var leftkeypress = false;
 
         function mainloop(){
             colorRect(0,0,canvas.width,canvas.height,'black') // bg
