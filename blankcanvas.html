@@ -1,6 +1,6 @@
 <!doctype html>
 <body>
-    <canvas id="gameCanvas" width="400" height="400"></canvas>
+    <canvas id="gameCanvas" width="600" height="600"></canvas>
     <script>
         var canvas, canvasContext;
 
@@ -8,26 +8,50 @@
             canvas = document.getElementById('gameCanvas');
             canvasContext = canvas.getContext('2d');
 
-            document.addEventListener('keydown' = keyPressed);
-            document.addEventListener('keyup' = keyReleased);
+            document.addEventListener('keydown', keyPressed);
+            document.addEventListener('keyup', keyReleased);
 
             setInterval(mainloop, 1000/50);
         }
-        var playerXpos = 200;
-        var playerYpos = 400 - PLAYER_SIZE;
+
+        var userName = '';
+        while (userName == '' || userName == null) {
+            userName = prompt('What is your name?', ''); // Asks the user their username
+        }
+
+        var playerXpos = 300;
+        var playerYpos = 300;
         var playerXspeed = 5;
         var playerYspeed = 5;
         const PLAYER_SIZE = 10;
 
-        var leftkeypress = false;
+        var enemyXpos = 0;
+        var enemyYpos = 0;
+        var enemyXspeed = 0;
+        var enemyYspeed = 5;
+        const ENEMY_SIZE = 10;
+
+        var Akeypress = false;
+        var Dkeypress = false;
+        var Wkeypress = false;
+        var Skeypress = false;
 
         function mainloop(){
-            colorRect(0,0,canvas.width,canvas.height,'black') // bg
-            colorRect(100,50,20,20,'red') // player
+            colorRect(0,0,canvas.width,canvas.height,'black'); // bg
+
+            colorRect(playerXpos,playerYpos,PLAYER_SIZE,PLAYER_SIZE,'blue'); // player
+            colorRect(enemyXpos,enemyYpos,ENEMY_SIZE,ENEMY_SIZE,'red'); // enemy
+        }
+        function keyPressed(evt){
+            console.log(evt.keyCode);
+        }
+
+        function keyReleased(evt){
+           
         }
 
         function colorRect(x,y,w,h,c){
-        canvasContext.fillstyle = c;
+        canvasContext.fillStyle = c;
         canvasContext.fillRect(x,y,w,h);
         }
 
