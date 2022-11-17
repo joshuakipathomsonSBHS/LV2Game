@@ -79,7 +79,7 @@
 
         function mainloop(){
             colorRect(0,0,canvas.width,canvas.height,'black'); // bg
-            
+
             colorRect(playerXpos,playerYpos,PLAYER_SIZE,PLAYER_SIZE,'blue'); // player
             colorRect(enemyXpos,enemyYpos,ENEMY_SIZE,ENEMY_SIZE,'red'); // enemy
             playerMove();
@@ -128,8 +128,24 @@
                 SKeyPressed = false;
             }
         }
-
-       
+        
+         // start function
+         function updateScore(score, x, y, c) {
+            console.log("Update Score " + score);
+            canvasContext.font = "25pt Calibri";
+            canvasContext.fillStyle = c;
+            canvasContext.fillText("Score: " + score, x, y);
+        } // end function
+ 
+ 
+         // start function
+        function updateLives(lives, x, y, c){
+            console.log("Update Lives " + lives);
+             canvasContext.font = "25pt Calibri";
+            canvasContext.fillStyle = c;
+            canvasContext.fillText("Lives: " + lives, x, y);
+           }
+           //end function
 
         function colorRect(x,y,w,h,c){
         canvasContext.fillStyle = c;
