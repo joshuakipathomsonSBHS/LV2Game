@@ -19,6 +19,42 @@
             userName = prompt('What is your name?', ''); // Asks the user their username
         }
 
+        
+        var difficulty = '';
+        var pass = false;
+
+        while (pass == false) {
+            difficulty = prompt('How hard do you want it? Easy, Medium, Hard, Extreme, Demon');
+            difficulty = difficulty.toLowerCase();
+            if (difficulty == 'easy' || difficulty == 'medium' || difficulty == 'hard' || difficulty == 'extreme' || difficulty == 'demon') {
+                pass = true;
+            }
+        } 
+
+        if (difficulty == 'easy') {
+            maxSpeed = 5;
+            minSpeed = 2;
+        }
+
+        if (difficulty == 'medium') {
+            maxSpeed = 10;
+            minSpeed = 5;
+        }
+
+        if (difficulty == 'hard') {
+            maxSpeed = 15;
+            minSpeed = 11;
+        }
+        if (difficulty == 'extreme') {
+            maxSpeed = 18;
+            minSpeed = 14;
+        }
+        if (difficulty == 'demon') {
+            maxSpeed = 21;
+            minSpeed = 19;
+        }
+
+
         var playerXpos = 300;
         var playerYpos = 300;
         var playerXspeed = 5;
@@ -35,20 +71,65 @@
         var Dkeypress = false;
         var Wkeypress = false;
         var Skeypress = false;
+    
+        const A_KEY = 65;
+        const D_KEY = 68;
+        const W_KEY = 87;
+        const S_KEY = 83;
 
         function mainloop(){
             colorRect(0,0,canvas.width,canvas.height,'black'); // bg
-
+            
             colorRect(playerXpos,playerYpos,PLAYER_SIZE,PLAYER_SIZE,'blue'); // player
             colorRect(enemyXpos,enemyYpos,ENEMY_SIZE,ENEMY_SIZE,'red'); // enemy
+            playerMove();
         }
-        function keyPressed(evt){
-            console.log(evt.keyCode);
+
+        function playerMove(){
+            if(Akeypress){
+            playerXpos -= playerXspeed;
+            }
+            if(Dkeypress){
+            playerXpos -= playerXspeed;
+            }
+            if(Wkeypress){
+            playerYpos -= playerYspeed;
+            }
+            if(Skeypress){
+            playerYpos -= playerYspeed;
+            }
+        }
+        function keyPressed(evt) {
+            if (evt.keyCode == D_KEY) {
+                DKeyPressed = true;
+            }
+            if (evt.keyCode == A_KEY) {
+                AKeyPressed = true;
+            }
+            if (evt.keyCode == W_KEY) {
+                WKeyPressed = true;
+            }
+            if (evt.keyCode == S_KEY) {
+                SKeyPressed = true;
+            }
         }
 
         function keyReleased(evt){
-           
+            if (evt.keyCode == D_KEY) {
+                DKeyPressed = false;
+            }
+            if (evt.keyCode == A_KEY) {
+                AKeyPressed = false;
+            }
+            if (evt.keyCode == W_KEY) {
+                WKeyPressed = false;
+            }
+            if (evt.keyCode == S_KEY) {
+                SKeyPressed = false;
+            }
         }
+
+       
 
         function colorRect(x,y,w,h,c){
         canvasContext.fillStyle = c;
